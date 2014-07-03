@@ -29,15 +29,6 @@ static const int GRID_COLUMNS = 10;
     self.userInteractionEnabled = YES;
 }
 
-- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition
-{
-    //get the row and column that was touched, return the Creature inside the corresponding cell
-    int row = touchPosition.y / _cellHeight;
-    int collumn = touchPosition.x / _cellWidth;
-    return _gridArray[row][collumn];
-    
-}
-
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     //get the x,y coordinates of the touch
@@ -82,7 +73,15 @@ static const int GRID_COLUMNS = 10;
         }
         
         y += _cellHeight;
-    }
+     }
+}
+- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition
+{
+    //get the row and column that was touched, return the Creature inside the corresponding cell
+    int row = touchPosition.y / _cellHeight;
+    int collumn = touchPosition.x / _cellWidth;
+    return _gridArray[row][collumn];
+    
 }
 
 @end
