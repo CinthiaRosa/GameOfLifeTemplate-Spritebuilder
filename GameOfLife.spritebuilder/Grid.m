@@ -41,6 +41,14 @@ static const int GRID_COLUMNS = 10;
     creature.isAlive = !creature.isAlive;
 }
 
+- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition
+{
+    //get the row and column that was touched, return the Creature inside the corresponding cell
+    int row = touchPosition.y / _cellHeight;
+    int collumn = touchPosition.x / _cellWidth;
+    return _gridArray[row][collumn];
+    
+}
 - (void)setupGrid
 {
     // divide the grid's size by the number of columns/rows to figure out the right width and height of each cell
@@ -73,15 +81,7 @@ static const int GRID_COLUMNS = 10;
         }
         
         y += _cellHeight;
-     }
-}
-- (Creature *)creatureForTouchPosition:(CGPoint)touchPosition
-{
-    //get the row and column that was touched, return the Creature inside the corresponding cell
-    int row = touchPosition.y / _cellHeight;
-    int collumn = touchPosition.x / _cellWidth;
-    return _gridArray[row][collumn];
-    
+    }
 }
 
 @end
